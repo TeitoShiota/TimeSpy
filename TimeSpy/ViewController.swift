@@ -14,17 +14,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        workHourStartStepperOutlet.stepValue = 0.25
-        workHourEndStepperOutlet.stepValue = 0.25
-        workHourStartLabel.text = "7:00"
-        workHourEndLabel.text = "12:00"
+        workHourStartStepperOutlet.stepValue = 0.25 //Changes the default step value from 1 to 0.25.
+        workHourEndStepperOutlet.stepValue = 0.25 //Changes the default step value from 1 to 0.25.
+        workHourStartLabel.text = "7:00" //Sets the placeholder text for starting label on startup.
+        workHourEndLabel.text = "12:00" //Sets the placeholder text for ending label on startup.
     }
     
 //Steppers
-    @IBAction func workHourStartStepper(_ sender: Any) {workHourStartLabel.text = "\(String(Int(workHourStartStepperOutlet.value)))\(convertDecimalHoursToString(Float(workHourStartStepperOutlet.value), true))"}
-    @IBAction func workHourEndStepper(_ sender: Any) {workHourEndLabel.text = "\(String(Int(workHourEndStepperOutlet.value)))\(convertDecimalHoursToString(Float(workHourEndStepperOutlet.value), true))"}
-    @IBOutlet weak var workHourStartStepperOutlet: UIStepper! //Outlet for the starting hour stepper
-    @IBOutlet weak var workHourEndStepperOutlet: UIStepper! //Outlet for the end hour stepper
+    @IBAction func workHourStartStepper(_ sender: Any) {workHourStartLabel.text = "\(String(Int(workHourStartStepperOutlet.value)))\(convertDecimalHoursToString(Float(workHourStartStepperOutlet.value), true))"} //Updates the starting time label when ever the value of starting time stepper change.
+    @IBAction func workHourEndStepper(_ sender: Any) {workHourEndLabel.text = "\(String(Int(workHourEndStepperOutlet.value)))\(convertDecimalHoursToString(Float(workHourEndStepperOutlet.value), true))"} //Updates the end time label when ever the value of ending time stepper change.
+    @IBOutlet weak var workHourStartStepperOutlet: UIStepper! //Outlet for the starting hour stepper.
+    @IBOutlet weak var workHourEndStepperOutlet: UIStepper! //Outlet for the end hour stepper.
         
 //Labels
     @IBOutlet weak var workHourStartLabel: UILabel! //Label showing the selected starting time.

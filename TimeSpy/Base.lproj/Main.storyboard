@@ -42,7 +42,7 @@
                                     <action selector="workHourStartStepper:" destination="BYZ-38-t0r" eventType="valueChanged" id="hOM-En-bxa"/>
                                 </connections>
                             </stepper>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="15" minimumValue="12" maximumValue="18" translatesAutoresizingMaskIntoConstraints="NO" id="ZL2-t2-ngT">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="12" minimumValue="12" maximumValue="18" translatesAutoresizingMaskIntoConstraints="NO" id="ZL2-t2-ngT">
                                 <rect key="frame" x="251" y="435" width="94" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
