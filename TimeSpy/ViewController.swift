@@ -8,12 +8,20 @@
 import UIKit
 
 class ViewController: UIViewController {
-// Test
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
 
-
+//Steppers
+    @IBAction func workHourStartStepper(_ sender: Any) {}
+    @IBAction func workHourEndStepper(_ sender: Any) {}
+    
+//Labels
+    @IBOutlet weak var workHourStartLabel: UILabel!
+    @IBOutlet weak var workHourEndLabel: UILabel!
+    
+    
 }
 
