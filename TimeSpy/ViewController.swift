@@ -16,16 +16,16 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         workHourStartStepperOutlet.stepValue = 0.25
         workHourEndStepperOutlet.stepValue = 0.25
-        workHourStartLabel.text = String(workHourStartStepperOutlet.value)
-        workHourEndLabel.text = String(workHourEndStepperOutlet.value)
+        workHourStartLabel.text = "7:00"
+        workHourEndLabel.text = "12:00"
     }
 
 //Global Variabals
     var startTime:Float = 7
     var endTime:Float = 15.5
 //Steppers
-    @IBAction func workHourStartStepper(_ sender: Any) {workHourStartLabel.text = String(workHourStartStepperOutlet.value)}
-    @IBAction func workHourEndStepper(_ sender: Any) {workHourEndLabel.text = String(workHourEndStepperOutlet.value)}
+    @IBAction func workHourStartStepper(_ sender: Any) {workHourStartLabel.text = "\(String(Int(workHourStartStepperOutlet.value)))\(convertDecimalHoursToString(Float(workHourStartStepperOutlet.value), true))"}
+    @IBAction func workHourEndStepper(_ sender: Any) {workHourEndLabel.text = "\(String(Int(workHourEndStepperOutlet.value)))\(convertDecimalHoursToString(Float(workHourEndStepperOutlet.value), true))"}
     @IBOutlet weak var workHourStartStepperOutlet: UIStepper!
     @IBOutlet weak var workHourEndStepperOutlet: UIStepper!
         
@@ -50,13 +50,25 @@ class ViewController: UIViewController {
     }
     
     func updateResultsLabel(){
-        resultsLabel.text = "You have worked for \(Int(calculateHours()))\(convertDecimalHoursToString(calculateHours())) hours"
+        resultsLabel.text = "You have worked for \(Int(calculateHours())) hours\(convertDecimalHoursToString(calculateHours(), false))"
     }
     
-    //Takes work hours as input and returns a containing the floating point fraction of hours converted into a matching text
-    func convertDecimalHoursToString(_ var1:Float) -> String {
+//Takes work hours as input and returns a containing the floating point fraction of hours converted into a matching text
+    func convertDecimalHoursToString(_ var1:Float, _ noText:Bool) -> String {
         var result:String = ""
         let hoursInFractions: Float = (var1 - floor(var1))
+        if noText == true {
+            switch hoursInFractions {
+            case 0.25:
+                result = ":15"
+            case 0.5:
+                result = ":30"
+            case 0.75:
+                result = ":45"
+            default:
+                result = ":00"
+            }
+        } else {
         switch hoursInFractions {
         case 0.25:
             result = " and 15 minutes"
@@ -66,6 +78,7 @@ class ViewController: UIViewController {
             result = " and 45 minutes"
         default:
             result = ""
+            }
         }
         return result
     }
