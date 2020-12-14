@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  TimeSpy
 //
-//  Created by Elevgf2 on 14/12/2020.
+//  Created by Lasse Karahan Kristiansen on 14/12/2020.
 //
 
 import SwiftUI
@@ -19,26 +19,22 @@ class ViewController: UIViewController {
         workHourStartLabel.text = "7:00"
         workHourEndLabel.text = "12:00"
     }
-
-//Global Variabals
-    var startTime:Float = 7
-    var endTime:Float = 15.5
+    
 //Steppers
     @IBAction func workHourStartStepper(_ sender: Any) {workHourStartLabel.text = "\(String(Int(workHourStartStepperOutlet.value)))\(convertDecimalHoursToString(Float(workHourStartStepperOutlet.value), true))"}
     @IBAction func workHourEndStepper(_ sender: Any) {workHourEndLabel.text = "\(String(Int(workHourEndStepperOutlet.value)))\(convertDecimalHoursToString(Float(workHourEndStepperOutlet.value), true))"}
-    @IBOutlet weak var workHourStartStepperOutlet: UIStepper!
-    @IBOutlet weak var workHourEndStepperOutlet: UIStepper!
+    @IBOutlet weak var workHourStartStepperOutlet: UIStepper! //Outlet for the starting hour stepper
+    @IBOutlet weak var workHourEndStepperOutlet: UIStepper! //Outlet for the end hour stepper
         
 //Labels
-    @IBOutlet weak var workHourStartLabel: UILabel!
-    @IBOutlet weak var workHourEndLabel: UILabel!
-    @IBOutlet weak var resultsLabel: UILabel!
+    @IBOutlet weak var workHourStartLabel: UILabel! //Label showing the selected starting time.
+    @IBOutlet weak var workHourEndLabel: UILabel! //Label showing the selected end time.
+    @IBOutlet weak var resultsLabel: UILabel! //Label showing the amount of hours worked.
     
 //Buttons
     @IBAction func calculateHoursButton(_ sender: Any) {updateResultsLabel()}
     
 //Functions
-    
     func calculateHours() -> Float{
         var result:Float = Float(workHourEndStepperOutlet.value - workHourStartStepperOutlet.value)
         if workHourEndStepperOutlet.value >= 12.5{
@@ -49,8 +45,9 @@ class ViewController: UIViewController {
         return result
     }
     
+//Update the results label with the amounts of hours worked, minus lunchbreak if aproppiate.
     func updateResultsLabel(){
-        resultsLabel.text = "You have worked for \(Int(calculateHours())) hours\(convertDecimalHoursToString(calculateHours(), false))"
+        resultsLabel.text = "You have worked for \(Int(calculateHours())) hours\(convertDecimalHoursToString(calculateHours(), false))."
     }
     
 //Takes work hours as input and returns a containing the floating point fraction of hours converted into a matching text
